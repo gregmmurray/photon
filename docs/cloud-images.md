@@ -1,3 +1,6 @@
+#_Cloud Images and Release Candidate_
+_We have not published updated cloud images for the 1.0 Release Candidate. Please perform any testing with the ISO. We'll be publishing updated cloud images once we reach the GA milestone for our 1.0 release. We'll leave this information intact in case we still have users on tech preview 2._ 
+
 #Compatible Cloud Images
 
   1. GCE - Google Compute Engine
@@ -64,6 +67,7 @@ ec2-bundle-image -c cert.pem -k private-key.pem -u $AWS_USER_ID --arch x86_64 --
 
 ####Upload the bundle
 ec2-upload-bundle --manifest directory-name/photon-ami.raw.manifest.xml --bucket bucket-name --access-key $AWS_ACCESS_KEY --secret-key $AWS_SECRET_KEY
+
 ####Register the AMI
 ec2-register bucket-name/photon-ami.raw.manifest.xml --name name --architecture x86_64 --virtualization-type hvm
 
@@ -84,7 +88,12 @@ Create running VM instances using Azure management portal
 
 ##OVA
 
-The ova image uses a custom linux kernel, which is an optimized kernel based on version 4.1.3. Two ova files are generated from build - photon-ova.ova and photon-custom.ova. The password for photon-ova.ova should be changed using guest customization options when uploading to vCA. Photon-custom.ova is generated with the password changeme, intended for use with Fusion/Workstation.
+The ova image uses a custom linux kernel, which is an optimized kernel based on version 4.1.3. The photon-custom.ova requires the following default login credentials:
+
+    username: root
+    password: changeme
+    
+Upon initial login, you'll be forced to change the password. 
 
 ####Pre-requisites
 
